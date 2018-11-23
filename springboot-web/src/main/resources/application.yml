@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: springboot
+  mvc:
+    throwExceptionIfNoHandlerFound: true
+  resources:
+    staticLocations: classpath:/static/
+  task:
+    taskSchedulerPoolSize: 16
+  rabbitmq:
+    host: 172.31.134.217
+    port: 5672
+    username: lyc
+    password: lyc
+    virtual-host: /
+    publisher-confirms: true
+    publisher-returns: true
+    queueName: test
+    exchange: test
+    isOpen: true
+  datasource:
+    name: POSTGRE
+    identity: POSTGRE
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://172.31.134.230:5432/ads
+    username: ads
+    password: adspassword
+    validationQuery: select 1
+
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    needSql: true
+    removeAbandoned: false
+    needWeb: false
+
+
+mybatis:
+  mapper-locations: classpath:mapper/postgre/*/*.xml
+
+server:
+  port: 8090
+  servlet:
+      context-path: /ads
+  session-timeout: 5000
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain,application/javascript
+  error:
+    whitelabel:
+      enabled: false
+  tomcat:
+    uri-encoding: UTF-8
+
+
+
+
